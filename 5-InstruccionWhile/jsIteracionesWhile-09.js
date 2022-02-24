@@ -3,19 +3,41 @@ Al presionar el botón pedir  números  hasta que el usuario quiera,
 mostrar el número máximo y el número mínimo ingresado.*/
 function mostrar()
 {	// declarar variables
-	var banderaDelPrimero;
 	var numeroIngresado;
-	var numeroMaximo;
-	var numeroMinimo;
 	var respuesta;
-	//iniciar variables
-	banderaDelPrimero="es el primero";
-	respuesta='si';
-	while(respuesta=="si")
+	var banderaPrimerIngreso;
+	var maximo;
+	var minimo;
+
+	respuesta = true;
+	banderaPrimerIngreso = false;
+
+	while(respuesta == true)
 	{
-		
-		respuesta=prompt("desea continuar?");
+		numeroIngresado = prompt("Ingrese un numero ");
+		numeroIngresado = parseInt(numeroIngresado);
+
+		if (banderaPrimerIngreso == false) 
+		{
+			maximo = numeroIngresado;
+			minimo = numeroIngresado;
+			banderaPrimerIngreso = true;
+		}
+		else
+		{
+			if (numeroIngresado >maximo) 
+			{
+				maximo = numeroIngresado;
+			}
+			if (numeroIngresado <minimo) 
+			{
+				minimo = numeroIngresado;
+			}
+		}
+
+
+		respuesta = confirm("Desea ingresar otro numero?")
 	}
-	txtIdMaximo.value=numeroMaximo;
-	txtIdMinimmo.value=numeroMinimo;
+	txtIdMaximo.value = maximo;
+	txtIdMinimo.value = minimo;
 }//FIN DE LA FUNCIÓN
